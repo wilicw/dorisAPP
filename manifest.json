@@ -1,11 +1,11 @@
 {
-  "name": "dorisApp",
+  "name": "Doris App 2.0",
   "short_name": "dorisApp",
-  "theme_color": "#1976d2",
+  "theme_color": "#673ab7",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/dorisAPP/",
+  "start_url": "/dorisAPP/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

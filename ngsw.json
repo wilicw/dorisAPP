@@ -1,57 +1,24 @@
 {
   "configVersion": 1,
-  "index": "/dorisAPP/index.html",
+  "index": "/dorisAPP/dorisAPP/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
-      "urls": [
-        "/dorisAPP/es2015-polyfills.358ed1827c991dd2afb0.js",
-        "/dorisAPP/favicon.ico",
-        "/dorisAPP/index.html",
-        "/dorisAPP/main.d4fb756d6614ca1b2840.js",
-        "/dorisAPP/polyfills.407a467dedb63cfdd103.js",
-        "/dorisAPP/runtime.a5dd35324ddfd942bef1.js",
-        "/dorisAPP/styles.7eb1c95348541c9e2073.css"
-      ],
+      "urls": [],
       "patterns": []
     },
     {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
-      "urls": [
-        "/dorisAPP/assets/icons/icon-128x128.png",
-        "/dorisAPP/assets/icons/icon-144x144.png",
-        "/dorisAPP/assets/icons/icon-152x152.png",
-        "/dorisAPP/assets/icons/icon-192x192.png",
-        "/dorisAPP/assets/icons/icon-384x384.png",
-        "/dorisAPP/assets/icons/icon-512x512.png",
-        "/dorisAPP/assets/icons/icon-72x72.png",
-        "/dorisAPP/assets/icons/icon-96x96.png"
-      ],
+      "urls": [],
       "patterns": []
     }
   ],
   "dataGroups": [],
-  "hashTable": {
-    "/dorisAPP/assets/icons/icon-128x128.png": "0b0b5c0f1aa303ee43728947c104fbf6cff142fb",
-    "/dorisAPP/assets/icons/icon-144x144.png": "f51d430e61489208bc9a1dc6f8d2959b02e830d1",
-    "/dorisAPP/assets/icons/icon-152x152.png": "967e243e128cf108b103300d06a447ddf89a8441",
-    "/dorisAPP/assets/icons/icon-192x192.png": "4f8f719430118f0893edb32ffb59e7894d242fde",
-    "/dorisAPP/assets/icons/icon-384x384.png": "92699937c16d3a00d188c79f109d6235c919e758",
-    "/dorisAPP/assets/icons/icon-512x512.png": "3f6cb68fce4d80b33848c52ccc404541d3c395d6",
-    "/dorisAPP/assets/icons/icon-72x72.png": "61b1a6f04f2e5b0dd7e1266e279270a1324a9c31",
-    "/dorisAPP/assets/icons/icon-96x96.png": "383701c444cf2411300e87ed4b7bc8e4c4f46bdc",
-    "/dorisAPP/es2015-polyfills.358ed1827c991dd2afb0.js": "b7a81c61d32b0b12737f0c13f45973ba391cd7f9",
-    "/dorisAPP/favicon.ico": "b74fab3d09eddc274ce0c7fb271d0dcaed5b07be",
-    "/dorisAPP/index.html": "3705d8c48737b000e09c4797181a2fe0f52012f6",
-    "/dorisAPP/main.d4fb756d6614ca1b2840.js": "5e9186e591958a5fed7b4b7b8610b413a88353ae",
-    "/dorisAPP/polyfills.407a467dedb63cfdd103.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
-    "/dorisAPP/runtime.a5dd35324ddfd942bef1.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
-    "/dorisAPP/styles.7eb1c95348541c9e2073.css": "cafae4e42027c0d6005133fd797c52a68bbfcb53"
-  },
+  "hashTable": {},
   "navigationUrls": [
     {
       "positive": true,
