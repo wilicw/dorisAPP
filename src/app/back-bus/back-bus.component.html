@@ -1,0 +1,11 @@
+<mat-list>
+ <mat-list-item *ngFor="let num of bus"> {{num.num}} - {{num.station}}
+   <span style="color: #B68700;" *ngIf="num.time == 0"> - 進站中</span>
+   <span style="color: #219F39;" *ngIf="num.time > 0"> - {{num.time}} 分鐘</span>
+   <span style="color: #a42222;" *ngIf="num.time == -1"> - 未發車</span>
+   <span *ngIf="num.time == -2"> - 交管不停靠</span>
+   <span *ngIf="num.time == -3"> - 末班車已過</span>
+   <span *ngIf="num.time == -4"> - 今日未營運</span>
+   <span style="color: #21429F;" *ngIf="num.time == -5"> - 載入中...</span>
+ </mat-list-item>
+</mat-list>
