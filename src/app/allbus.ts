@@ -18,7 +18,7 @@ let BackBus = [
   { num: '橘17' , way: 1, station: '捷運三民高中站(復興路)', City: 'NewTaipei', time: -5},
 ];
 
-const getAuthorizationHeader = function() {
+const GetAuthorizationHeader = function() {
 	let AppID = '1254bb3584c945f389f8ccc339727435';
 	let AppKey = 'RAI3kFI573Hz9Fih0XsQnl_9XsA';
 	let GMTString = new Date().toUTCString();
@@ -29,62 +29,9 @@ const getAuthorizationHeader = function() {
 	let Authorization = `hmac username="${AppID}", algorithm="hmac-sha1", headers="x-date", signature="${HMAC}"`;
   return { 'Authorization': Authorization, 'X-Date': GMTString};
 }
-function BackBusTime() {
-  console.log('Back')
-  BackBus.forEach((bus)=>{
-    let url = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/${bus.City}/${bus.num}?$filter=StopName%2FZh_tw%20eq%20'${bus.station}'&$top=30&$format=JSON&$select=Direction%2C%20EstimateTime%2CStopStatus`
-    axios.get(url, {headers: getAuthorizationHeader()})
-      .then((resp)=>{
-        resp.data.forEach((item)=>{
-          if (item.Direction == bus.way) {
-            let status = item.StopStatus;
-            bus.time = Math.round(item.EstimateTime/60)
-            if (status == 2) {
-              bus.time = -2
-            } else if (status == 3) {
-              bus.time = -3
-            } else if (status == 4) {
-              bus.time = -4
-            }
-            if (isNaN(bus.time)) {
-              bus.time = -1
-            }
-          }
-        })
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
-  })
-}
 
-function GoBusTime() {
-  console.log('Go')
-  GoBus.forEach((bus)=>{
-    let url = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/${bus.City}/${bus.num}?$filter=StopName%2FZh_tw%20eq%20'${bus.station}'&$top=30&$format=JSON&$select=Direction%2C%20EstimateTime%2CStopStatus`
-    axios.get(url, {headers: getAuthorizationHeader()})
-      .then((resp)=>{
-        resp.data.forEach((item)=>{
-          if (item.Direction == bus.way) {
-            let status = item.StopStatus;
-            bus.time = Math.round(item.EstimateTime/60)
-            if (status == 2) {
-              bus.time = -2
-            } else if (status == 3) {
-              bus.time = -3
-            } else if (status == 4) {
-              bus.time = -4
-            }
-            if (isNaN(bus.time)) {
-              bus.time = -1
-            }
-          }
-        })
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
-  })
+function GetUrl (bus) {
+  let url = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/${bus.City}/${bus.num}?$filter=StopName/Zh_tw eq '${bus.station}' and Direction eq '${bus.way}'&$top=30&$format=JSON&$select=Direction%2C%20EstimateTime%2CStopStatus`
+  return url
 }
-
-export {GoBus, BackBus, GoBusTime, BackBusTime}
+export {GoBus, BackBus, GetAuthorizationHeader, GetUrl}
