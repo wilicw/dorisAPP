@@ -3,14 +3,19 @@
     <span>{{title}}</span>
   </mat-toolbar>
   <mat-tab-group mat-align-tabs="center" [selectedIndex]="selected">
-    <mat-tab label="上學公車">
+    <mat-tab label="上學">
       <ng-template matTabContent>
         <app-go-bus></app-go-bus>
       </ng-template>
     </mat-tab>
-    <mat-tab label="放學公車">
+    <mat-tab label="放學">
       <ng-template matTabContent>
         <app-back-bus></app-back-bus>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="課表">
+      <ng-template matTabContent>
+        <app-timetable></app-timetable>
       </ng-template>
     </mat-tab>
   </mat-tab-group>
