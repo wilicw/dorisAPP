@@ -30,8 +30,14 @@ const GetAuthorizationHeader = function() {
   return { 'Authorization': Authorization, 'X-Date': GMTString};
 }
 
+let SetMode = (mode)=>{
+  Mode = mode
+}
+
+let Mode = 1
+
 function GetUrl (bus) {
   let url = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/${bus.City}/${bus.num}?$filter=StopName/Zh_tw eq '${bus.station}' and Direction eq '${bus.way}'&$top=30&$format=JSON&$select=Direction%2C%20EstimateTime%2CStopStatus`
   return url
 }
-export {GoBus, BackBus, GetAuthorizationHeader, GetUrl}
+export {GoBus, BackBus, GetAuthorizationHeader, GetUrl, Mode, SetMode}
