@@ -10,13 +10,15 @@ import { GoBusComponent } from './go-bus/go-bus.component';
 import { BackBusComponent } from './back-bus/back-bus.component';
 import { environment } from '../environments/environment';
 import { TimetableComponent } from './timetable/timetable.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoBusComponent,
     BackBusComponent,
-    TimetableComponent
+    TimetableComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
