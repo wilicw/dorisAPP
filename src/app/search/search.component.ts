@@ -28,9 +28,10 @@ export class SearchComponent implements OnInit {
     this.showgo = []
     this.showback = []
     let self = this
-    this.http.get(tpurl, {headers: GetAuthorizationHeader()}).subscribe((resp)=>{
+    this.http.get<any[]>(tpurl, {headers: GetAuthorizationHeader()}).subscribe((resp)=>{
+      console.log(resp)
       if (resp.length == 0) {
-        this.http.get(ntpurl, {headers: GetAuthorizationHeader()}).subscribe((resp)=>{
+        this.http.get<any[]>(ntpurl, {headers: GetAuthorizationHeader()}).subscribe((resp)=>{
           if (resp.length == 0) {
             alert("沒這路公車")
           } else {
