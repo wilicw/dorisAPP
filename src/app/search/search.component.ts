@@ -22,6 +22,31 @@ export class SearchComponent implements OnInit {
     this.num = event.target.value;
   }
 
+  pushData(resp, city, num) {
+    let self = this
+    let sort = null
+    let search = (di, name) => {
+      let ret = null
+      resp.forEach((item) => {
+        if (item.StopName.Zh_tw == name) {
+          ret = Math.round(item.EstimateTime/60)
+        }
+      })
+      return ret
+    }
+    this.http.get<any[]>(`https://ptx.transportdata.tw/MOTC/v2/Bus/DisplayStopOfRoute/City/${city}/${num}?$format=JSON`, {headers: GetAuthorizationHeader()}).subscribe((data)=>{
+      sort = data
+      sort[0].Stops.forEach((item) => {
+        let time = search(0, item.StopName.Zh_tw)
+        self.showgo.push(`  ${item.StopName.Zh_tw} - ${time} 分鐘`)
+      })
+      sort[1].Stops.forEach((item) => {
+        let time = search(1, item.StopName.Zh_tw)
+        self.showback.push(`  ${item.StopName.Zh_tw} - ${time} 分鐘`)
+      })
+    })
+  }
+
   search() {
     let tpurl = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/Taipei?$filter=RouteName/Zh_tw eq '${this.num}'&$format=JSON`
     let ntpurl = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/NewTaipei?$filter=RouteName/Zh_tw eq '${this.num}'&$format=JSON`
@@ -35,23 +60,11 @@ export class SearchComponent implements OnInit {
           if (resp.length == 0) {
             alert("沒這路公車")
           } else {
-            resp.forEach((item) => {
-              if (item.Direction == 1) {
-                self.showgo.push(`  ${item.StopName.Zh_tw} - ${Math.round(item.EstimateTime/60)} 分鐘`)
-              } else {
-                self.showback.push(`  ${item.StopName.Zh_tw} - ${Math.round(item.EstimateTime/60)} 分鐘`)
-              }
-            })
+            this.pushData(resp, "NewTaipei", self.num)
           }
         })
       } else {
-        resp.forEach((item) => {
-          if (item.Direction == 1) {
-            self.showgo.push(`  ${item.StopName.Zh_tw} - ${Math.round(item.EstimateTime/60)} 分鐘`)
-          } else {
-            self.showback.push(`  ${item.StopName.Zh_tw} - ${Math.round(item.EstimateTime/60)} 分鐘`)
-          }
-        })
+        this.pushData(resp, "Taipei", self.num)
       }
     })
 

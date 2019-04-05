@@ -37,7 +37,7 @@ let SetMode = (mode)=>{
 let Mode = 1
 
 function GetUrl (bus) {
-  let url = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/${bus.City}/${bus.num}?$filter=StopName/Zh_tw eq '${bus.station}' and Direction eq '${bus.way}'&$top=30&$format=JSON&$select=Direction%2C%20EstimateTime%2CStopStatus`
+  let url = `https://ptx.transportdata.tw/MOTC/v2/Bus/EstimatedTimeOfArrival/City/${bus.City}/${bus.num}?$filter=StopName/Zh_tw eq '${bus.station}' and Direction eq '${bus.way}'&$top=30&$format=JSON&$select=Direction%2C%20EstimateTime%2CStopStatus%2CRouteName`
   return url
 }
 export {GoBus, BackBus, GetAuthorizationHeader, GetUrl, Mode, SetMode}
